@@ -3,12 +3,11 @@ package com.example.hearing_java_figma;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hearing_java_figma.placeholder.PlaceholderContent.PlaceholderItem;
-import com.example.hearing_java_figma.databinding.FragmentKeywordsBinding;
+import com.example.hearing_java_figma.databinding.FragmentMessagesBinding;
 
 import java.util.List;
 
@@ -16,18 +15,18 @@ import java.util.List;
  * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<MykeywordsRecyclerViewAdapter.ViewHolder> {
+public class MymessagesRecyclerViewAdapter extends RecyclerView.Adapter<MymessagesRecyclerViewAdapter.ViewHolder> {
 
     private final List<PlaceholderItem> mValues;
 
-    public MykeywordsRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MymessagesRecyclerViewAdapter(List<PlaceholderItem> items) {
         mValues = items;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        return new ViewHolder(FragmentKeywordsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new ViewHolder(FragmentMessagesBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
     }
 
@@ -44,11 +43,11 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        /* public final TextView mIdView;*/
+        /*public final TextView mIdView;*/
         public final TextView mContentView;
         public PlaceholderItem mItem;
 
-        public ViewHolder(FragmentKeywordsBinding binding) {
+        public ViewHolder(FragmentMessagesBinding binding) {
             super(binding.getRoot());
             /*mIdView = binding.itemNumber;*/
             mContentView = binding.content;

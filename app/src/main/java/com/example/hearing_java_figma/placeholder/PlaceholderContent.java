@@ -38,7 +38,7 @@ public class PlaceholderContent {
     }
 
     private static PlaceholderItem createPlaceholderItem(int position) {
-        return new PlaceholderItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new PlaceholderItem(String.valueOf(position), "Keywords " + position, makeDetails(position));
     }
 
     private static String makeDetails(int position) {
