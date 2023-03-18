@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#DBEAFA" />
+    <corners android:radius="@dimen/message_block_radius" />
+    <padding
+        android:bottom="@dimen/message_block_padding"
+        android:left="@dimen/message_block_padding"
+        android:right="@dimen/message_block_padding"
+        android:top="@dimen/message_block_padding"/>
+</shape>

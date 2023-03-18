@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#DBEAFA" />
+    <corners android:radius="@dimen/keyword_block_radius" />
+    <padding
+        android:bottom="@dimen/keyword_block_padding"
+        android:left="@dimen/keyword_block_padding"
+        android:right="@dimen/keyword_block_padding"
+        android:top="@dimen/keyword_block_padding"/>
+</shape>
