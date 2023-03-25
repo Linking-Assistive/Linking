@@ -17,24 +17,24 @@ import java.util.List;
 
 @Dao
 public interface KeywordDao {
-    @Query("SELECT keyword_name, activated FROM keyword")
-    List<KeywordTuple> loadKeywordInfo();
+    @Query("SELECT keyword_name, activated FROM keyword_table")
+    LiveData<List<KeywordTuple>> loadKeywordInfo();
 
-    @Query("SELECT * FROM keyword")
-    List<Keyword> getAll();
+    @Query("SELECT * FROM keyword_table")
+    LiveData<List<Keyword>> getAll();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Keyword keyword);
-
-    @Query("UPDATE keyword SET activated= :is_activated WHERE keyword_name= :name")
+    @Query("UPDATE keyword_table SET activated= :is_activated WHERE keyword_name= :name")
     void updateActivateByName(String name, boolean is_activated);
 
+    @Update
+    void update(Keyword... keywords);
+
     @Insert
-    void insertAll(Keyword... keywords);
+    void insert(Keyword... keywords);
 
     @Delete
-    void delete(Keyword keyword);
+    void delete(Keyword... keywords);
 
-    @Delete
-    void deleteAll(List<Keyword> keywords);
+    @Query("DELETE FROM keyword_table")
+    void deleteAll();
 }

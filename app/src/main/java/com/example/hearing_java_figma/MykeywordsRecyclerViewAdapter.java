@@ -7,21 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.hearing_java_figma.VO.KeywordTuple;
 import com.example.hearing_java_figma.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.hearing_java_figma.databinding.FragmentKeywordsBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link com.example.hearing_java_figma.VO.KeywordTuple}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<MykeywordsRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private List<KeywordTuple> mValues;
 
-    public MykeywordsRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MykeywordsRecyclerViewAdapter(List<KeywordTuple> items) {
         mValues = items;
+    }
+
+    public void setList(List<KeywordTuple> mValues){
+        this.mValues = mValues;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         /*holder.mIdView.setText(mValues.get(position).id);*/
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).getName());
     }
 
     @Override
@@ -46,7 +51,7 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
     public class ViewHolder extends RecyclerView.ViewHolder {
         /* public final TextView mIdView;*/
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public KeywordTuple mItem;
 
         public ViewHolder(FragmentKeywordsBinding binding) {
             super(binding.getRoot());

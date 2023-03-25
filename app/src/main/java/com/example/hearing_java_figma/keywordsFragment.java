@@ -1,9 +1,12 @@
 package com.example.hearing_java_figma;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hearing_java_figma.DB.AppDatabase;
+import com.example.hearing_java_figma.VM.KeywordViewModel;
+import com.example.hearing_java_figma.VO.KeywordTuple;
 import com.example.hearing_java_figma.placeholder.PlaceholderContent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -23,6 +32,12 @@ public class keywordsFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+
+    private List<KeywordTuple> mItems;
+
+    private KeywordViewModel keywordViewModel;
+
+    private MykeywordsRecyclerViewAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -64,7 +79,20 @@ public class keywordsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MykeywordsRecyclerViewAdapter(PlaceholderContent.ITEMS));
+
+            mItems = new ArrayList<>();
+            adapter = new MykeywordsRecyclerViewAdapter(mItems);
+            recyclerView.setAdapter(adapter);
+
+            keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);
+            keywordViewModel.loadKeywordInfoLiveData().observe(getViewLifecycleOwner(), new Observer<List<KeywordTuple>>() {
+                @Override
+                public void onChanged(List<KeywordTuple> keywordTuples) {
+                    adapter.setList(keywordTuples);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+
         }
         return view;
     }
