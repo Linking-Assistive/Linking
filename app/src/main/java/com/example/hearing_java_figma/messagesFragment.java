@@ -53,9 +53,10 @@ public class messagesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_messages_list, container, false);
 
+        View main_view = inflater.inflate(R.layout.fragment_messages_list, container, false);
         // Set the adapter
+        View view = main_view.findViewById(R.id.list);
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
@@ -66,6 +67,6 @@ public class messagesFragment extends Fragment {
             }
             recyclerView.setAdapter(new MymessagesRecyclerViewAdapter(PlaceholderContent.ITEMS));
         }
-        return view;
+        return main_view;
     }
 }

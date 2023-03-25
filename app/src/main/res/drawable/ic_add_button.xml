@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="@dimen/add_button_diameter"
+        android:height="@dimen/add_button_diameter"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
+
+
+        <path
+            android:strokeColor="#FFFFFF"
+            android:pathData="M 1,12 L23,12 z"
+            android:fillColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"/>
+
+        <path
+            android:strokeColor="#FFFFFF"
+            android:pathData="M 12,1 L12,23 z"
+            android:fillColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"/>
+</vector>
