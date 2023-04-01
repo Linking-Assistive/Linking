@@ -8,8 +8,8 @@
     <dimen name="keyword_block_radius">8dp</dimen>
     <dimen name="keyword_block_padding">0dp</dimen>
 
-    <dimen name="message_block_height">40dp</dimen>
-    <dimen name="message_block_radius">12dp</dimen>
+    <dimen name="message_block_height">60dp</dimen>
+    <dimen name="message_block_radius">0dp</dimen>
     <dimen name="message_block_padding">0dp</dimen>
 
     <dimen name="device_block_height">40dp</dimen>

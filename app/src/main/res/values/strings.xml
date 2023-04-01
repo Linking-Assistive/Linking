@@ -12,4 +12,9 @@
     <string name="OK">OK</string>
     <string name="Cancel">Cancel</string>
 
+
+    <string name="Delete_Keyword">Delete</string>
+    <string name="Activate_Keyword">Activate</string>
+    <string name="Deactivate_Keyword">Deactivate</string>
+
 </resources>

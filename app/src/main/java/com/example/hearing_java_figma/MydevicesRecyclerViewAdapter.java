@@ -3,24 +3,23 @@ package com.example.hearing_java_figma;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.hearing_java_figma.placeholder.PlaceholderContent.PlaceholderItem;
+import com.example.hearing_java_figma.placeholder.DeviceContent.DeviceItem;
 import com.example.hearing_java_figma.databinding.FragmentDevicesBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link DeviceItem}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MydevicesRecyclerViewAdapter extends RecyclerView.Adapter<MydevicesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<DeviceItem> mValues;
 
-    public MydevicesRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MydevicesRecyclerViewAdapter(List<DeviceItem> items) {
         mValues = items;
     }
 
@@ -46,7 +45,7 @@ public class MydevicesRecyclerViewAdapter extends RecyclerView.Adapter<Mydevices
     public class ViewHolder extends RecyclerView.ViewHolder {
         /*public final TextView mIdView;*/
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public DeviceItem mItem;
 
         public ViewHolder(FragmentDevicesBinding binding) {
             super(binding.getRoot());
