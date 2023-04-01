@@ -2,12 +2,15 @@ package com.example.hearing_java_figma.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,9 @@ import android.widget.EditText;
 
 import com.example.hearing_java_figma.MainActivity;
 import com.example.hearing_java_figma.R;
+import com.example.hearing_java_figma.VM.KeywordViewModel;
 import com.example.hearing_java_figma.VO.KeywordTuple;
+import com.example.hearing_java_figma.keywordsFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +29,8 @@ import com.example.hearing_java_figma.VO.KeywordTuple;
  */
 
 public class DialogAddKeyword extends DialogFragment {
-    public static String StoredString = null;
+    private DialogEditListener listener;
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -41,7 +47,10 @@ public class DialogAddKeyword extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         EditText text = (EditText)view.findViewById(R.id.new_keyword);
-                        StoredString = text.getText().toString();
+                        if (listener != null) {
+                            listener.onDialogEditClick(text.getText().toString());
+                            DialogAddKeyword.this.getDialog().dismiss();
+                        }
                     }
                 })
                 .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
@@ -50,5 +59,13 @@ public class DialogAddKeyword extends DialogFragment {
                     }
                 });
         return builder.create();
+    }
+
+    public interface DialogEditListener {
+        void onDialogEditClick(String keyName);
+    }
+
+    public void setListener(DialogEditListener listener) {
+        this.listener = listener;
     }
 }

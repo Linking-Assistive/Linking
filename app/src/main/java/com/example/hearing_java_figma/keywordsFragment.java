@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.hearing_java_figma.DB.AppDatabase;
 import com.example.hearing_java_figma.PO.Keyword;
@@ -35,7 +37,7 @@ import java.util.List;
 /**
  * A fragment representing a list of Items.
  */
-public class keywordsFragment extends Fragment {
+public class keywordsFragment extends Fragment implements DialogAddKeyword.DialogEditListener {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -48,9 +50,8 @@ public class keywordsFragment extends Fragment {
 
     private MykeywordsRecyclerViewAdapter adapter;
 
-    private void AddKeyword(KeywordTuple e){
-        mItems.add(e);
-    }
+    private AlertDialog.Builder builder;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -90,17 +91,9 @@ public class keywordsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DialogAddKeyword newFragment = new DialogAddKeyword();
+                newFragment.setListener(keywordsFragment.this);
                 newFragment.show(getParentFragmentManager() ,"add_keyword");
-                if (newFragment.StoredString != null) {
-                    KeywordTuple keyword = new KeywordTuple();
-                    keyword.setName(newFragment.StoredString);
-                    keyword.setActivated(true);
-                    AddKeyword(keyword);
-                }else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    builder.setMessage("Error");
-                    builder.create().show();
-                }
+                builder = new AlertDialog.Builder(view.getContext());
             }
         });
 
@@ -130,5 +123,17 @@ public class keywordsFragment extends Fragment {
 
         }
         return main_view;
+    }
+
+    @Override
+    public void onDialogEditClick(String keyName) {
+        // Toast.makeText(getContext(), keyName, Toast.LENGTH_SHORT).show();
+        if (keyName != null) {
+            Keyword keyword = new Keyword(keyName, true);
+            keywordViewModel.insertKeyword(keyword);
+        }else{
+            builder.setMessage("Error");
+            builder.create().show();
+        }
     }
 }
