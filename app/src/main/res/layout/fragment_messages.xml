@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/content"
@@ -12,6 +13,23 @@
         android:layout_width="0dp"
         android:layout_weight="0.92"
         android:layout_height="@dimen/message_block_height"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/activate_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:background="#6699CC"/>
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="A rubbish bin icon"
+        android:src="@drawable/rubbish_bin"
+        android:layout_marginBottom="@dimen/text_margin"
+        app:tint="#000000"
+        android:background="#FF0000"/>
 </LinearLayout>

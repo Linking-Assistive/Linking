@@ -1,13 +1,9 @@
 package com.example.hearing_java_figma;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,16 +18,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hearing_java_figma.DB.AppDatabase;
 import com.example.hearing_java_figma.PO.Keyword;
-import com.example.hearing_java_figma.Repository.KeywordRepository;
+import com.example.hearing_java_figma.ObjectListContent.KeywordsContent;
 import com.example.hearing_java_figma.VM.KeywordViewModel;
 import com.example.hearing_java_figma.VO.KeywordTuple;
 import com.example.hearing_java_figma.dialog.DialogAddKeyword;
-import com.example.hearing_java_figma.placeholder.PlaceholderContent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,7 +44,6 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
     private MykeywordsRecyclerViewAdapter adapter;
 
     private AlertDialog.Builder builder;
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -108,8 +100,8 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            mItems = new ArrayList<>();
-            adapter = new MykeywordsRecyclerViewAdapter(mItems);
+            Log.d("Keyword insert", "Keyword insert message");
+            adapter = new MykeywordsRecyclerViewAdapter(KeywordsContent.ITEMS);
             recyclerView.setAdapter(adapter);
 
             keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);

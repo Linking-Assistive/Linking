@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hearing_java_figma.placeholder.PlaceholderContent;
+import com.example.hearing_java_figma.placeholder.MessageContent;
 
 /**
  * A fragment representing a list of Items.
@@ -65,7 +65,7 @@ public class messagesFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MymessagesRecyclerViewAdapter(PlaceholderContent.ITEMS));
+            recyclerView.setAdapter(new MymessagesRecyclerViewAdapter(MessageContent.ITEMS));
         }
         return main_view;
     }
