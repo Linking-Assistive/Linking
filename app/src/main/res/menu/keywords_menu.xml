@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/activate_keyword"
+        android:title="@string/Activate_Keyword"/>
+
+    <item
+        android:id="@+id/deactivate_keyword"
+        android:title="@string/Deactivate_Keyword"/>
+
+    <item
+        android:id="@+id/delete_button"
+        android:title="@string/Delete_Keyword"/>
+
+
+</menu>

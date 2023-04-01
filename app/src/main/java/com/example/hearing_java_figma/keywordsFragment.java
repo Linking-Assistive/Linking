@@ -1,9 +1,9 @@
 package com.example.hearing_java_figma;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,16 +11,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hearing_java_figma.DB.AppDatabase;
+import com.example.hearing_java_figma.ObjectListContent.KeywordsContent;
 import com.example.hearing_java_figma.VM.KeywordViewModel;
 import com.example.hearing_java_figma.VO.KeywordTuple;
-import com.example.hearing_java_figma.placeholder.PlaceholderContent;
+import com.example.hearing_java_figma.dialog.DialogAddKeyword;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,10 +56,10 @@ public class keywordsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -68,20 +69,42 @@ public class keywordsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_keywords_list, container, false);
+
+        View main_view = inflater.inflate(R.layout.fragment_keywords_list, container, false);
+        View view = main_view.findViewById(R.id.list);
+
+        // Button initial
+        FloatingActionButton fab = main_view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogAddKeyword newFragment = new DialogAddKeyword();
+                newFragment.show(getParentFragmentManager() ,"add_keyword");
+                if (newFragment.StoredString != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setMessage(newFragment.StoredString);
+                    builder.create().show();
+                }else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setMessage("Error");
+                    builder.create().show();
+                }
+            }
+        });
 
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
+
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            mItems = new ArrayList<>();
-            adapter = new MykeywordsRecyclerViewAdapter(mItems);
+            Log.d("Keyword insert", "Keyword insert message");
+            adapter = new MykeywordsRecyclerViewAdapter(KeywordsContent.ITEMS);
             recyclerView.setAdapter(adapter);
 
             keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);
@@ -94,6 +117,6 @@ public class keywordsFragment extends Fragment {
             });
 
         }
-        return view;
+        return main_view;
     }
 }

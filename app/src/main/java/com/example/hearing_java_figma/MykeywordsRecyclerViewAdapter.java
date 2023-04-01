@@ -3,12 +3,10 @@ package com.example.hearing_java_figma;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hearing_java_figma.VO.KeywordTuple;
-import com.example.hearing_java_figma.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.hearing_java_figma.databinding.FragmentKeywordsBinding;
 
 import java.util.List;

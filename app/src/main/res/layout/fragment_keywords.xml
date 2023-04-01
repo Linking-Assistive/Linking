@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-<!--    <TextView-->
-<!--        android:id="@+id/item_number"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="@dimen/text_margin"-->
-<!--        android:textAppearance="?attr/textAppearanceListItem" />-->
-
-    <TextView
-        android:id="@+id/content"
-        android:background="@drawable/keywords_style"
-        android:textAlignment="center"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/keyword_block_height"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/content"
+            android:background="@drawable/keywords_style"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/keyword_block_height"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/activate_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:background="#6699CC"/>
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="A rubbish bin icon"
+            android:src="@drawable/rubbish_bin"
+            android:layout_marginBottom="@dimen/text_margin"
+            app:tint="#000000"
+            android:background="#FF0000"/>
+
 </LinearLayout>

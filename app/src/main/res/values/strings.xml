@@ -3,4 +3,18 @@
     <string name="title_messages">Messages</string>
     <string name="title_devices">Devices</string>
     <string name="title_keywords">Keywords</string>
+    <string name="title_activity_add_keyword">AddKeywordActivity</string>
+
+    <string name="add_keyword_button">AddKeyword</string>
+
+    <string name="add_keyword_hint">Keyword</string>
+
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+
+
+    <string name="Delete_Keyword">Delete</string>
+    <string name="Activate_Keyword">Activate</string>
+    <string name="Deactivate_Keyword">Deactivate</string>
+
 </resources>
