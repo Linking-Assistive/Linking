@@ -4,39 +4,32 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/nav_bar_margin"
     >
-    <com.Linking.Leftslidelib.TouchListenLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/root"
+        android:id="@+id/list"
+        android:name="com.example.hearing_java_figma.keywordsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
-    <androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.example.hearing_java_figma.keywordsFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context=".keywordsFragment"
-    tools:listitem="@layout/fragment_keywords"/>
-    </com.Linking.Leftslidelib.TouchListenLinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentBottom="true"
-    android:backgroundTint="#FFDC00"
-    android:src="@drawable/ic_add_button"
-    android:contentDescription="@string/add_keyword_button"
-    android:layout_marginEnd="@dimen/add_button_diameter"
-    android:layout_marginBottom="@dimen/add_button_diameter" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".keywordsFragment"
+        tools:listitem="@layout/fragment_keywords"/>
 
-    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#FFDC00"
+        android:src="@drawable/ic_add_button"
+        android:contentDescription="@string/add_keyword_button"
+        android:layout_marginEnd="@dimen/add_button_diameter"
+        android:layout_marginBottom="@dimen/add_button_diameter" />
+
+</RelativeLayout>
 

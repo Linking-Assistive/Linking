@@ -6,4 +6,5 @@
         android:left="@dimen/keyword_block_padding"
         android:right="@dimen/keyword_block_padding"
         android:top="@dimen/keyword_block_padding"/>
+
 </shape>
