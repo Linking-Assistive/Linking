@@ -24,6 +24,10 @@ public class KeywordRepository {
         return keywordDao.loadKeywordInfo();
     }
 
+    public LiveData<Keyword> getKeywordByIdLiveData(int id){
+        return keywordDao.getKeywordById(id);
+    }
+
     public LiveData<List<Keyword>> getAllLiveData(){
         return keywordDao.getAll();
     }

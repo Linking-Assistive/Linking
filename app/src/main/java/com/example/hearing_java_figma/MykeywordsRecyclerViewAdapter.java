@@ -4,16 +4,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.hearing_java_figma.PO.Keyword;
+import com.example.hearing_java_figma.VM.KeywordViewModel;
 import com.example.hearing_java_figma.VO.KeywordTuple;
 import com.example.hearing_java_figma.databinding.FragmentKeywordsBinding;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.List;
 
@@ -23,19 +29,21 @@ import java.util.List;
  */
 public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<MykeywordsRecyclerViewAdapter.ViewHolder> {
 
-    private List<KeywordTuple> mValues;
+    private List<Keyword> mValues;
 
-    public MykeywordsRecyclerViewAdapter(List<KeywordTuple> items) {
+    private static KeywordViewModel keywordViewModel;
+
+    public MykeywordsRecyclerViewAdapter(List<Keyword> items, KeywordViewModel viewModel) {
         mValues = items;
+        keywordViewModel = viewModel;
     }
 
-    public void setList(List<KeywordTuple> mValues){
+    public void setList(List<Keyword> mValues){
         this.mValues = mValues;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         return new ViewHolder(FragmentKeywordsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
     }
@@ -52,10 +60,10 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         /* public final TextView mIdView;*/
         public final TextView mContentView;
-        public KeywordTuple mItem;
+        public Keyword mItem;
 
         public ViewHolder(FragmentKeywordsBinding binding) {
             super(binding.getRoot());
@@ -76,8 +84,9 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //put your code that needed to be executed when okay is clicked
+                                    keywordViewModel.deleteKeyword(mItem);
                                     AlertDialog.Builder builderok = new AlertDialog.Builder(view.getContext());
-                                    builderok.setMessage("Delete function not yet incomplete");
+                                    builderok.setMessage("Delete complete");
                                     builderok.create().show();
                                 }
                             });
@@ -104,10 +113,8 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
 
                     switch (menuItem.getItemId()){
                         case R.id.activate_switch:
-
                             break;
                         case R.id.deactivate_keyword:
-
                             break;
                     }
                     return true;

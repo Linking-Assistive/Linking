@@ -24,6 +24,10 @@ public class KeywordViewModel extends AndroidViewModel {
         return keywordRepository.loadKeywordInfoLiveData();
     }
 
+    public LiveData<List<Keyword>> getAllLiveData(){
+        return keywordRepository.getAllLiveData();
+    }
+
     public void insertKeyword(Keyword... keywords){
         keywordRepository.insertKeyword(keywords);
     }
