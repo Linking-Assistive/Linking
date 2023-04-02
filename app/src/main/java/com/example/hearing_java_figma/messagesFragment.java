@@ -66,6 +66,9 @@ public class messagesFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             recyclerView.setAdapter(new MymessagesRecyclerViewAdapter(MessageContent.ITEMS));
+            // 滚动到最后一项
+            int lastItemIndex = 24;
+            recyclerView.scrollToPosition(lastItemIndex);
         }
         return main_view;
     }
