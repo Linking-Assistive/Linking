@@ -101,9 +101,7 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            Log.d("Keyword insert", "Keyword insert message");
             keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);
-
             List<Keyword> keywords = new ArrayList<>();
             adapter = new MykeywordsRecyclerViewAdapter(keywords, keywordViewModel);
             recyclerView.setAdapter(adapter);

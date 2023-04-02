@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
         holder.mItem = mValues.get(position);
         /*holder.mIdView.setText(mValues.get(position).id);*/
         holder.mContentView.setText(mValues.get(position).getName());
+        holder.mSwitch.setChecked(mValues.get(position).isActivated());
     }
 
     @Override
@@ -65,13 +67,24 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
         public final TextView mContentView;
         public Keyword mItem;
 
+        public SwitchMaterial mSwitch;
+
         public ViewHolder(FragmentKeywordsBinding binding) {
             super(binding.getRoot());
             /*mIdView = binding.itemNumber;*/
+            mSwitch = binding.activateSwitch;
+            mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    Log.i("debug3", mItem.toString() + b);
+                    mItem.setActivated(b);
+                    // keywordViewModel.updateKeyword(mItem);
+                }
+            });
             binding.content.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    KeywordsMenu(view);
+                    KeywordsMenu(view, mItem);
                 }
             });
             binding.deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +114,7 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
             });
             mContentView = binding.content;
         }
-        private void KeywordsMenu(View view){
+        private void KeywordsMenu(View view, Keyword keyword){
 
             PopupMenu popupmenu = new PopupMenu(view.getContext(), view);
             popupmenu.setGravity(Gravity.LEFT);
@@ -110,13 +123,17 @@ public class MykeywordsRecyclerViewAdapter extends RecyclerView.Adapter<Mykeywor
             popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
-
+                    Log.i("debug1", keyword.toString());
                     switch (menuItem.getItemId()){
-                        case R.id.activate_switch:
+                        case R.id.activate_keyword:
+                            keyword.setActivated(true);
                             break;
                         case R.id.deactivate_keyword:
+                            keyword.setActivated(false);
                             break;
                     }
+                    keywordViewModel.updateKeyword(keyword);
+                    Log.i("debug2", keyword.toString());
                     return true;
                 }
             });
