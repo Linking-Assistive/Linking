@@ -25,6 +25,7 @@ import com.example.hearing_java_figma.VO.KeywordTuple;
 import com.example.hearing_java_figma.dialog.DialogAddKeyword;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private List<KeywordTuple> mItems;
+    private List<Keyword> mItems;
 
     private KeywordViewModel keywordViewModel;
 
@@ -100,15 +101,15 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            Log.d("Keyword insert", "Keyword insert message");
-            adapter = new MykeywordsRecyclerViewAdapter(KeywordsContent.ITEMS);
+            keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);
+            List<Keyword> keywords = new ArrayList<>();
+            adapter = new MykeywordsRecyclerViewAdapter(keywords, keywordViewModel);
             recyclerView.setAdapter(adapter);
 
-            keywordViewModel = new ViewModelProvider(this).get(KeywordViewModel.class);
-            keywordViewModel.loadKeywordInfoLiveData().observe(getViewLifecycleOwner(), new Observer<List<KeywordTuple>>() {
+            keywordViewModel.getAllLiveData().observe(getViewLifecycleOwner(), new Observer<List<Keyword>>() {
                 @Override
-                public void onChanged(List<KeywordTuple> keywordTuples) {
-                    adapter.setList(keywordTuples);
+                public void onChanged(List<Keyword> keyword) {
+                    adapter.setList(keyword);
                     adapter.notifyDataSetChanged();
                 }
             });
@@ -124,7 +125,7 @@ public class keywordsFragment extends Fragment implements DialogAddKeyword.Dialo
             Keyword keyword = new Keyword(keyName, true);
             keywordViewModel.insertKeyword(keyword);
         }else{
-            builder.setMessage("Error");
+            builder.setMessage("Please input");
             builder.create().show();
         }
     }

@@ -23,6 +23,9 @@ public interface KeywordDao {
     @Query("SELECT * FROM keyword_table")
     LiveData<List<Keyword>> getAll();
 
+    @Query("SELECT * FROM keyword_table where kid = :id")
+    LiveData<Keyword> getKeywordById(int id);
+
     @Query("UPDATE keyword_table SET activated= :is_activated WHERE keyword_name= :name")
     void updateActivateByName(String name, boolean is_activated);
 
