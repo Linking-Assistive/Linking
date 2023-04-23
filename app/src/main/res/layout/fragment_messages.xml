@@ -16,16 +16,17 @@
         android:layout_height="@dimen/message_block_height"
         android:layout_marginBottom="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
-    <ImageView
-        android:id="@+id/direction"
-        android:background="@drawable/bubble_direction"
-        android:src="@drawable/arrow_to_right"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_weight="0.3"
-        android:layout_height="@dimen/message_block_height"
-        android:layout_marginBottom="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/direction"-->
+<!--        android:background="@drawable/bubble_direction"-->
+<!--        android:src="@drawable/arrow_to_right"-->
+<!--        android:textAlignment="center"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_weight="0.3"-->
+<!--        android:layout_height="@dimen/message_block_height"-->
+<!--        android:layout_marginBottom="@dimen/text_margin"-->
+<!--        android:textAppearance="?attr/textAppearanceListItem" />-->
 
 </LinearLayout>
